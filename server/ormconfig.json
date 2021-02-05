@@ -1,0 +1,20 @@
+{
+   "type": "postgres",
+   "host": "localhost",
+   "port": 5432,
+   "username": "postgres",
+   "password": "animelibdev",
+   "database": "animelibdev",
+   "synchronize": true,
+   "logging": false,
+   "entities": [
+      "./src/entity/*.ts"
+   ],
+   "migrations": [
+      "./src/migration/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration"
+   }
+}
