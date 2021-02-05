@@ -6,15 +6,6 @@ import { compare } from 'bcryptjs';
 import { getRepository } from 'typeorm';
 import { sign } from 'jsonwebtoken';
 
-interface SessionDTO {
-  token: string;
-}
-
-interface ErrorDTO {
-  message: string;r
-  code: number;
-}
-
 interface IInput {
   username: string;
   password: string;
