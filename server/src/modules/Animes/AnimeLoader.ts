@@ -8,7 +8,6 @@ export async function getAnimes() {
   return animes;
 }
 
-
 export async function saveAnime(_: any, { input }) {
   try {
     const anime = repository.create(input);

@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { User } from '../../entity/User';
 import { getRepository } from "typeorm";
 import { hash } from 'bcryptjs';
+import isAuthenticated from '../../middlewares/isAuthenticated';
 
 const repository = getRepository(User);
 
@@ -38,5 +39,19 @@ export async function createUser(_: any, { input }) {
     return { message: 'Unknown error', code: 500 }
   }
 
-
 }
+
+
+export const profile = isAuthenticated(async (root, args,  context) => {
+  const currentUser = context.currentUser as { userId: number; email: string; };
+  if (currentUser) {
+    try {
+      const { userId } = currentUser;
+      const user = await repository.findOne(userId);
+      return user;
+    } catch(err) {
+      console.log(err);
+      return { code: 500, message: 'Internal server error' }
+    }
+  }
+});

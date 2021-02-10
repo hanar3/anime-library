@@ -1,5 +1,5 @@
 import { GraphQLInputObjectType, GraphQLList, GraphQLString } from 'graphql';
-import { createUser, getUsers } from './UserLoader';
+import { createUser, getUsers, profile } from './UserLoader';
 
 import UserType from './UserType';
 
@@ -7,6 +7,11 @@ export const queries = {
   users: {
     type:GraphQLList(UserType),
     resolve: getUsers,
+  },
+
+  profile: {
+    type: UserType,
+    resolve: profile,
   }
 };
 

@@ -1,6 +1,4 @@
 import * as Yup from 'yup';
-
-import { PassThrough } from 'stream';
 import { User } from '../../entity/User';
 import { compare } from 'bcryptjs';
 import { getRepository } from 'typeorm';
@@ -29,7 +27,6 @@ export async function createSession(_ ,{ input }: { input: IInput }) {
     const passwordMatches = await compare(password, user.password);
     
     if (!passwordMatches) return { message: 'Wrong username or password', code: 403 }
-    
 
     const token = sign({ userId: user.id, email: user.email }, 'a28b609a2f78697eda98710f3a8e424797fff38d', { expiresIn: '1d' })
     
