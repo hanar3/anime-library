@@ -1,4 +1,5 @@
-import { queries as animeQueries } from './Animes';
-import { queries as userQueries } from './Users';
+import { queries as animeQueries } from "./Animes";
+import { queries as reviewQueries } from "./Reviews";
+import { queries as userQueries } from "./Users";
 
-export default { ...animeQueries, ...userQueries };
+export default { ...animeQueries, ...userQueries, ...reviewQueries };

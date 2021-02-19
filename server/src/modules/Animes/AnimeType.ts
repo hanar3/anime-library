@@ -1,7 +1,13 @@
-import { GraphQLNonNull, GraphQLObjectType, GraphQLString, graphqlSync } from "graphql";
+import {
+  GraphQLInt,
+  GraphQLNonNull,
+  GraphQLObjectType,
+  GraphQLString,
+  graphqlSync,
+} from "graphql";
 
 export default new GraphQLObjectType({
-  name: 'AnimeType',
+  name: "AnimeType",
   fields: {
     id: {
       type: GraphQLNonNull(GraphQLString),
@@ -12,8 +18,17 @@ export default new GraphQLObjectType({
     englishName: {
       type: GraphQLString,
     },
+    japaneseName: {
+      type: GraphQLString,
+    },
+    status: {
+      type: GraphQLString,
+    },
+    episodes: {
+      type: GraphQLInt,
+    },
     description: {
       type: GraphQLString,
-    }
-  }
-})
+    },
+  },
+});

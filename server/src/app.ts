@@ -1,22 +1,28 @@
 import "reflect-metadata";
-import 'dotenv/config';
+import "dotenv/config";
 
 import { ApolloServer } from "apollo-server";
-import { createConnection } from 'typeorm';
+import CreateAnimeService from "./services/CreateAnimeService";
+import { createConnection } from "typeorm";
 import tradeTokenForUser from "./helpers/authHelpers";
 
-createConnection({ 
-  type: 'postgres', 
-  host: 'localhost',
+const animes = require("./data/animes.json");
+
+// animes.forEach((a) => console.log(a.title));
+
+createConnection({
+  type: "postgres",
+  host: "localhost",
   port: 5432,
-  username: 'postgres',
-  password: 'animelibdev',
-  database: 'animelibdev',
-  entities: [__dirname+ "/entity/*.ts"],
+  username: "postgres",
+  password: "animelibdev",
+  database: "animelibdev",
+  entities: [__dirname + "/entity/*.ts"],
 
   synchronize: true,
-}).then(connection => {
-  const schema = require('./schema').default;
+}).then((connection) => {
+  const schema = require("./schema").default;
+
   const server = new ApolloServer({
     schema,
     playground: true,
@@ -25,7 +31,7 @@ createConnection({
       let authToken;
 
       try {
-        authToken = req.headers['authorization'];
+        authToken = req.headers["authorization"];
         if (authToken) {
           currentUser = tradeTokenForUser(authToken);
         }
@@ -35,14 +41,9 @@ createConnection({
       return {
         authToken,
         currentUser,
-      }
-    }
+      };
+    },
   });
 
-  server.listen(4000, () => console.log(`Server running on port 4000`))
+  server.listen(4000, () => console.log(`Server running on port 4000`));
 });
-
-
-
-
-

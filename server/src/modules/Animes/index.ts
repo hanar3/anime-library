@@ -1,13 +1,30 @@
-import { GraphQLInputObjectType, GraphQLList, GraphQLString } from 'graphql';
-import { getAnimes, saveAnime } from './AnimeLoader'
+import {
+  GraphQLInputObjectType,
+  GraphQLInt,
+  GraphQLList,
+  GraphQLString,
+} from "graphql";
+import { getAnimes, saveAnime } from "./AnimeLoader";
 
-import AnimeType from './AnimeType';
+import AnimeType from "./AnimeType";
 
 export const queries = {
   animes: {
     type: GraphQLList(AnimeType),
+    args: {
+      input: {
+        type: new GraphQLInputObjectType({
+          name: "GetAnimesInput",
+          fields: {
+            page: {
+              type: GraphQLInt,
+            },
+          },
+        }),
+      },
+    },
     resolve: getAnimes,
-  }
+  },
 };
 
 export const mutations = {
@@ -16,8 +33,8 @@ export const mutations = {
     args: {
       input: {
         type: new GraphQLInputObjectType({
-          name: 'AnimeInput',
-          fields:{
+          name: "AnimeInput",
+          fields: {
             name: {
               type: GraphQLString,
             },
@@ -26,13 +43,12 @@ export const mutations = {
             },
             description: {
               type: GraphQLString,
-            }
-          }
+            },
+          },
         }),
-      }
+      },
     },
 
     resolve: saveAnime,
-  }
-
+  },
 };

@@ -1,13 +1,19 @@
-import { GraphQLNonNull, GraphQLObjectType, GraphQLString, GraphQLUnionType, graphqlSync } from "graphql";
+import {
+  GraphQLInt,
+  GraphQLNonNull,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLUnionType,
+} from "graphql";
 
-import ErrorType from '../Error/ErrorType';
+import ErrorType from "../Error/ErrorType";
 import { GraphQLDateTime } from "graphql-iso-date";
 
-const UserType = new GraphQLObjectType({
-  name: 'UserType',
+export const UserType = new GraphQLObjectType({
+  name: "UserType",
   fields: {
     id: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLNonNull(GraphQLInt),
     },
     email: {
       type: GraphQLNonNull(GraphQLString),
@@ -16,22 +22,22 @@ const UserType = new GraphQLObjectType({
       type: GraphQLNonNull(GraphQLString),
     },
     password: {
-      type: GraphQLNonNull(GraphQLString)
+      type: GraphQLNonNull(GraphQLString),
     },
+
     createdAt: {
-      type: GraphQLNonNull(GraphQLDateTime)
+      type: GraphQLNonNull(GraphQLDateTime),
     },
     updatedAt: {
-      type: GraphQLNonNull(GraphQLDateTime)
-    }
-  }
+      type: GraphQLNonNull(GraphQLDateTime),
+    },
+  },
 });
 
-
 export default new GraphQLUnionType({
-  name: 'UserOrError',
+  name: "UserOrError",
   types: [UserType, ErrorType],
   resolveType: (value) => {
     return value.id ? UserType : ErrorType;
-  }
+  },
 });

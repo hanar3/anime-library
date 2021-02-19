@@ -1,22 +1,34 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
-@Entity({ name: 'users' })
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
+
+import Review from "./Review";
+
+@Entity({ name: "users" })
 export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column()
+  email: string;
 
-    @Column()
-    email: string;
+  @Column()
+  username: string;
 
-    @Column()
-    username: string;
+  @Column()
+  password: string;
 
-    @Column()
-    password: string;
+  @CreateDateColumn()
+  createdAt: number;
 
-    @CreateDateColumn()
-    createdAt: number;
+  @UpdateDateColumn()
+  updatedAt: number;
 
-    @UpdateDateColumn()
-    updatedAt: number;
+  @OneToMany(() => Review, (review) => review.user)
+  reviews: Review[];
 }
