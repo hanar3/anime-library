@@ -3,10 +3,12 @@ import {
   GraphQLNonNull,
   GraphQLObjectType,
   GraphQLString,
-  graphqlSync,
+  GraphQLUnionType,
 } from "graphql";
 
-export default new GraphQLObjectType({
+import ErrorType from "../Error/ErrorType";
+
+const AnimeType = new GraphQLObjectType({
   name: "AnimeType",
   fields: {
     id: {
@@ -32,3 +34,13 @@ export default new GraphQLObjectType({
     },
   },
 });
+
+export const AnimeOrError = new GraphQLUnionType({
+  name: "AnimeOrError",
+  types: [AnimeType, ErrorType],
+  resolveType: (value) => {
+    return value.id ? AnimeType : ErrorType;
+  },
+});
+
+export default AnimeType;
