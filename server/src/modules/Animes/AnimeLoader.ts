@@ -10,7 +10,7 @@ const repository = getRepository(Anime);
 
 export async function list(_, { input }) {
   const limit = 10;
-  const [animes] = await repository.findAndCount({
+  const [animes, max] = await repository.findAndCount({
     take: limit,
     skip: input.page * limit,
   });

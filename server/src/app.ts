@@ -1,14 +1,10 @@
 import "reflect-metadata";
 import "dotenv/config";
 
-import { ApolloServer } from "apollo-server";
-import CreateAnimeService from "./services/CreateAnimeService";
+import { ApolloServer } from "apollo-server-express";
 import { createConnection } from "typeorm";
+import express from 'express';
 import tradeTokenForUser from "./helpers/authHelpers";
-
-const animes = require("./data/animes.json");
-
-// animes.forEach((a) => console.log(a.title));
 
 createConnection({
   type: "postgres",
@@ -25,11 +21,11 @@ createConnection({
 
   const server = new ApolloServer({
     schema,
+    
     playground: true,
     context: async ({ req }) => {
       let currentUser;
       let authToken;
-
       try {
         authToken = req.headers["authorization"];
         if (authToken) {
@@ -45,5 +41,13 @@ createConnection({
     },
   });
 
-  server.listen(4000, () => console.log(`Server running on port 4000`));
+  const app = express();
+  server.applyMiddleware({ app });
+
+  app.get('/api/');
+
+  app.listen({ port: 4000 }, () =>
+    console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  );
+  
 });

@@ -20,6 +20,9 @@ export class User {
   @Column()
   username: string;
 
+  @Column({ type: "varchar", nullable: true })
+  statusMessage: string;
+
   @Column()
   password: string;
 

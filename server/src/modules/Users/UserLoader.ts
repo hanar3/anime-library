@@ -48,8 +48,8 @@ export const profile = isAuthenticated(async (root, args, context) => {
   if (currentUser) {
     try {
       const { userId } = currentUser;
-      const reviews = await repository.findOne(userId);
-      return reviews;
+      const user = await repository.findOne(userId);
+      return user;
     } catch (err) {
       console.log(err);
       return { code: 500, message: "Internal server error" };

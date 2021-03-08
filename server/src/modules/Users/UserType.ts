@@ -21,6 +21,9 @@ export const UserType = new GraphQLObjectType({
     username: {
       type: GraphQLNonNull(GraphQLString),
     },
+    statusMessage: {
+      type: GraphQLString,
+    },
     password: {
       type: GraphQLNonNull(GraphQLString),
     },

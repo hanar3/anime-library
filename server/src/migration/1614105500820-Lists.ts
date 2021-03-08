@@ -9,7 +9,7 @@ export class Lists1614105500820 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "lists",
+        name: "watchedAnimes",
         columns: [
           {
             name: "id",
@@ -49,18 +49,18 @@ export class Lists1614105500820 implements MigrationInterface {
     );
 
     await queryRunner.createForeignKey(
-      "lists",
+      "watchedAnimes",
       new TableForeignKey({
-        name: "listsToUser",
+        name: "listToUser",
         columnNames: ["user"],
         referencedTableName: "users",
         referencedColumnNames: ["id"],
       })
     );
     await queryRunner.createForeignKey(
-      "lists",
+      "watchedAnimes",
       new TableForeignKey({
-        name: "listsToAnime",
+        name: "listToAnimes",
         columnNames: ["anime"],
         referencedTableName: "animes",
         referencedColumnNames: ["id"],
@@ -69,8 +69,8 @@ export class Lists1614105500820 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey("lists", "reviewsToUser");
-    await queryRunner.dropForeignKey("lists", "reviewsToAnime");
-    await queryRunner.dropTable("lists");
+    await queryRunner.dropForeignKey("watchedAnimes", "listToAnimes");
+    await queryRunner.dropForeignKey("watchedAnimes", "listToUser");
+    await queryRunner.dropTable("watchedAnimes");
   }
 }
