@@ -1,0 +1,61 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/svelte-routing -D
+
+PATH: 
+  C:\Program Files\PowerShell\7-preview;C:\Program Files\AdoptOpenJDK\jdk-11.0.8.10-hotspot\bin;C:\Program Files\Yori;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\vitor\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\PowerShell\7-preview\preview;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\CMake\bin;C:\Program Files\PuTTY\;C:\Go\bin;C:\Users\vitor\.cargo\bin;C:\Users\vitor\AppData\Local\Microsoft\WindowsApps;C:\Users\vitor\.deno\bin;C:\Users\vitor\AppData\Local\Programs\Microsoft VS Code\bin;c:\Users\Vitor\AppData\Local\Android\Sdk\platform-tools;C:\Users\vitor\AppData\Roaming\nvm\v10.15.0;C:\Users\vitor\AppData\Local\Yarn\bin;C:\Program Files\Java\jdk1.8.0_241\bin;C:\src\flutter\bin;C:\src\genie;C:\src\ngrok;C:\Program Files\OpenSSL-Win64\bin;C:\Program Files\JetBrains\CLion 2020.2.3\bin;D:\MinGW\bin;C:\Users\vitor\go\bin;C:\src\ffmpeg\bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  14.11.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@types%2fsvelte-routing: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66096:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140748:22)
+      at Request.emit (events.js:314:20)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141720:10)
+      at Request.emit (events.js:314:20)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141642:12)
+      at Object.onceWrapper (events.js:420:28)
+      at IncomingMessage.emit (events.js:326:22)
+      at endReadableNT (_stream_readable.js:1252:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+npm manifest: 
+  {
+    "scripts": {
+      "start": "snowpack dev",
+      "build": "snowpack build",
+      "test": "web-test-runner \"src/**/*.test.ts\""
+    },
+    "dependencies": {
+      "svelte": "^3.24.0",
+      "svelte-routing": "^1.5.0"
+    },
+    "devDependencies": {
+      "@snowpack/plugin-dotenv": "^2.0.5",
+      "@snowpack/plugin-svelte": "^3.5.0",
+      "@snowpack/plugin-typescript": "^1.2.0",
+      "@snowpack/web-test-runner-plugin": "^0.2.0",
+      "@testing-library/svelte": "^3.0.0",
+      "@types/chai": "^4.2.13",
+      "@types/mocha": "^8.2.0",
+      "@types/snowpack-env": "^2.3.2",
+      "@web/test-runner": "^0.12.0",
+      "chai": "^4.2.0",
+      "snowpack": "^3.0.1",
+      "svelte-preprocess": "^4.0.8",
+      "typescript": "^4.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
