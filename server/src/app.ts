@@ -4,6 +4,7 @@ import "dotenv/config";
 import { ApolloServer } from "apollo-server-express";
 import { createConnection } from "typeorm";
 import express from 'express';
+import routes from './routes';
 import tradeTokenForUser from "./helpers/authHelpers";
 
 createConnection({
@@ -44,7 +45,7 @@ createConnection({
   const app = express();
   server.applyMiddleware({ app });
 
-  app.get('/api/');
+  app.use(routes);
 
   app.listen({ port: 4000 }, () =>
     console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
