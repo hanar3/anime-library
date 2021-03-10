@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -33,4 +34,7 @@ export default class Anime {
 
   @OneToMany(() => Review, (review) => review.anime)
   reviews: Review[];
+
+  @Column()
+  banner: string;
 }
