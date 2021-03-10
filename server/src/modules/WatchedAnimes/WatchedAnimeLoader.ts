@@ -1,6 +1,6 @@
-import WatchedAnime from "../../entity/WatchedAnime";
+import WatchedAnime from "./entity/WatchedAnime";
 import { getRepository } from "typeorm";
-import isAuthenticated from "../../middlewares/isAuthenticated";
+import isAuthenticated from "../../shared/middlewares/isAuthenticated";
 
 const repository = getRepository(WatchedAnime);
 

@@ -3,8 +3,8 @@ import { getRepository } from "typeorm";
 import multer from "multer";
 import fs from 'fs';
 import path from 'path';
-import Anime from "../entity/Anime";
-import multerConfig from "../config/multer";
+import Anime from "../../modules/Animes/entity/Anime";
+import multerConfig from "../../config/multer";
 
 const router = Router();
 const upload = multer(multerConfig);

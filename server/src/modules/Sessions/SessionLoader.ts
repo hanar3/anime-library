@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { User } from '../../entity/User';
+import { User } from '../Users/entity/User';
 import { compare } from 'bcryptjs';
 import { getRepository } from 'typeorm';
 import { sign } from 'jsonwebtoken';

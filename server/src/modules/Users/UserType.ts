@@ -6,7 +6,7 @@ import {
   GraphQLUnionType,
 } from "graphql";
 
-import ErrorType from "../Error/ErrorType";
+import ErrorType from "../../shared/Error/ErrorType";
 import { GraphQLDateTime } from "graphql-iso-date";
 
 export const UserType = new GraphQLObjectType({

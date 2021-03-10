@@ -6,8 +6,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { Exclude } from 'class-transformer';
 
-import Review from "./Review";
+import Review from "../../Reviews/entity/Review";
 
 @Entity({ name: "users" })
 export class User {
@@ -24,6 +25,7 @@ export class User {
   statusMessage: string;
 
   @Column()
+  @Exclude()
   password: string;
 
   @CreateDateColumn()

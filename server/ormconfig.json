@@ -11,10 +11,10 @@
       "./src/entity/*.ts"
    ],
    "migrations": [
-      "./src/migration/*.ts"
+      "./src/shared/database/migration/*.ts"
    ],
    "cli": {
       "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration"
+      "migrationsDir": "src/shared/database/migration"
    }
 }

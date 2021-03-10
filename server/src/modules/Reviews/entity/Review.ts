@@ -1,14 +1,12 @@
 import {
   Column,
   Entity,
-  ManyToMany,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 
-import Anime from "./Anime";
-import { User } from "./User";
+import Anime from "../../Animes/entity/Anime";
+import { User } from "../../Users/entity/User";
 
 @Entity({ name: "reviews" })
 export default class Review {

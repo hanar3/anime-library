@@ -6,8 +6,8 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-
-import Review from "./Review";
+import { Expose } from "class-transformer";
+import Review from "../../Reviews/entity/Review";
 
 @Entity({ name: "animes" })
 export default class Anime {
@@ -31,10 +31,18 @@ export default class Anime {
 
   @Column({ nullable: true })
   status: string;
+  
+  @Column()
+  banner: string;
 
   @OneToMany(() => Review, (review) => review.anime)
   reviews: Review[];
 
-  @Column()
-  banner: string;
+  @Expose({ name: 'bannerUrl' })
+  getAnimeBanner():string|null {
+    if (!this.banner) {
+      return null;
+    }
+    return `${process.env.APP_URL}/static/${this.banner}`;
+  }
 }

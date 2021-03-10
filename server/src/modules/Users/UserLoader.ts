@@ -1,9 +1,9 @@
 import * as Yup from "yup";
 
-import { User } from "../../entity/User";
+import { User } from "./entity/User";
 import { getRepository } from "typeorm";
 import { hash } from "bcryptjs";
-import isAuthenticated from "../../middlewares/isAuthenticated";
+import isAuthenticated from "../../shared/middlewares/isAuthenticated";
 
 const repository = getRepository(User);
 

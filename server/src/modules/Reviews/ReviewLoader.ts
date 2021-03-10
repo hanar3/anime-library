@@ -1,6 +1,6 @@
-import Review from "../../entity/Review";
+import Review from "./entity/Review";
 import { getRepository } from "typeorm";
-import isAuthenticated from "../../middlewares/isAuthenticated";
+import isAuthenticated from "../../shared/middlewares/isAuthenticated";
 
 const repository = getRepository(Review);
 

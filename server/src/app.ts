@@ -4,8 +4,8 @@ import "dotenv/config";
 import { ApolloServer } from "apollo-server-express";
 import { createConnection } from "typeorm";
 import express from "express";
-import routes from "./routes";
-import tradeTokenForUser from "./helpers/authHelpers";
+import routes from "./shared/routes";
+import tradeTokenForUser from "./shared/helpers/authHelpers";
 
 createConnection({
   type: "postgres",
@@ -14,7 +14,7 @@ createConnection({
   username: "postgres",
   password: "animelibdev",
   database: "animelibdev",
-  entities: [__dirname + "/entity/*.ts"],
+  entities: [__dirname + "/modules/**/entity/*.ts"],
 }).then((connection) => {
   const schema = require("./schema").default;
 
@@ -42,6 +42,7 @@ createConnection({
 
   const app = express();
   server.applyMiddleware({ app });
+  app.use('/static', express.static(__dirname + '/tmp'));
 
   app.use(routes);
 

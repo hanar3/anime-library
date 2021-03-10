@@ -1,6 +1,6 @@
 import { GraphQLError, GraphQLNonNull, GraphQLObjectType, GraphQLString, GraphQLUnionType, } from "graphql";
 
-import ErrorType from '../Error/ErrorType';
+import ErrorType from '../../shared/Error/ErrorType';
 
 const SessionType = new GraphQLObjectType({
   name: 'Session',

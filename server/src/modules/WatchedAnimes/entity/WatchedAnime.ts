@@ -10,8 +10,8 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
-import Anime from "./Anime";
-import { User } from "./User";
+import Anime from "../../Animes/entity/Anime";
+import { User } from "../../Users/entity/User";
 
 @Entity({ name: "watchedAnimes" })
 export default class WatchedAnime {

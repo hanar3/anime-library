@@ -1,10 +1,11 @@
 import UpdateAnimeService, {
   IUpdateAnimeData,
-} from "../../services/UpdateAnimeService";
+} from "./services/UpdateAnimeService";
 
-import Anime from "../../entity/Anime";
-import AppError from "../../AppError";
+import Anime from "./entity/Anime";
+import AppError from "../../shared/Error/AppError";
 import { getRepository } from "typeorm";
+import { classToClass } from 'class-transformer';
 
 const repository = getRepository(Anime);
 
@@ -22,7 +23,7 @@ export async function show(_, { input }: { input: { id: string } }) {
   try {
     const anime = await repository.findOne(input.id);
     if (!anime) return { code: 404, message: "Not found" };
-    return anime;
+    return classToClass(anime);
   } catch {}
 }
 

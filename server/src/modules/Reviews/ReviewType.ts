@@ -9,7 +9,7 @@ import {
 } from "graphql";
 
 import AnimeType from "../Animes/AnimeType";
-import ErrorType from "../Error/ErrorType";
+import ErrorType from "../../shared/Error/ErrorType";
 import { UserType } from "../Users/UserType";
 
 const ReviewType = new GraphQLObjectType({

@@ -1,5 +1,5 @@
 import Anime from "../entity/Anime";
-import AppError from "../AppError";
+import AppError from "../../../shared/Error/AppError";
 import { getRepository } from "typeorm";
 
 export interface IUpdateAnimeData {

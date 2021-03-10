@@ -6,7 +6,7 @@ import {
   GraphQLUnionType,
 } from "graphql";
 
-import ErrorType from "../Error/ErrorType";
+import ErrorType from "../../shared/Error/ErrorType";
 
 const AnimeType = new GraphQLObjectType({
   name: "AnimeType",
@@ -28,6 +28,12 @@ const AnimeType = new GraphQLObjectType({
     },
     episodes: {
       type: GraphQLInt,
+    },
+    banner: {
+      type: GraphQLString,
+    },
+    bannerUrl: {
+      type: GraphQLString,
     },
     description: {
       type: GraphQLString,
