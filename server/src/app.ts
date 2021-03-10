@@ -3,8 +3,8 @@ import "dotenv/config";
 
 import { ApolloServer } from "apollo-server-express";
 import { createConnection } from "typeorm";
-import express from 'express';
-import routes from './routes';
+import express from "express";
+import routes from "./routes";
 import tradeTokenForUser from "./helpers/authHelpers";
 
 createConnection({
@@ -15,14 +15,12 @@ createConnection({
   password: "animelibdev",
   database: "animelibdev",
   entities: [__dirname + "/entity/*.ts"],
-
-  synchronize: true,
 }).then((connection) => {
   const schema = require("./schema").default;
 
   const server = new ApolloServer({
     schema,
-    
+
     playground: true,
     context: async ({ req }) => {
       let currentUser;
@@ -50,5 +48,4 @@ createConnection({
   app.listen({ port: 4000 }, () =>
     console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
   );
-  
 });
