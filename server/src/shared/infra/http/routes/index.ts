@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import animeRoutes from './animes.routes'
+import animeRoutes from '@modules/Animes/infra/http/routes';
+
 
 const router = Router();
 

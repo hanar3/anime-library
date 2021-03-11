@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import "dotenv/config";
-
+import "@shared/container";
 import { ApolloServer } from "apollo-server-express";
 import { createConnection } from "typeorm";
 import tradeTokenForUser from "@shared/helpers/authHelpers";

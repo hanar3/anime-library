@@ -1,17 +1,18 @@
-import UpdateAnimeService, {
-  IUpdateAnimeData,
-} from "../../services/UpdateAnimeService";
-
-import Anime from "../typeorm/entities/Anime";
-import AppError from "@shared/Error/AppError";
-import { getRepository } from "typeorm";
 import { classToClass } from 'class-transformer';
+import { container } from 'tsyringe';
 
-const repository = getRepository(Anime);
+import AppError from "@shared/Error/AppError";
+import AddAnimeService from "@modules/Animes/services/CreateAnimeService";
+import UpdateAnimeService from "../../services/UpdateAnimeService";
+import ListAnimesService from '@modules/Animes/services/ListAnimesService';
+import IUpdateAnimeDTO from '@modules/Animes/dtos/IUpdateAnimeDTO';
+import ShowAnimeService from '@modules/Animes/services/ShowAnimeService';
 
 export async function list(_, { input }) {
   const limit = 10;
-  const [animes, max] = await repository.findAndCount({
+  const listAnimes = container.resolve(ListAnimesService);
+
+  const [animes, count] = await listAnimes.execute({
     take: limit,
     skip: input.page * limit,
   });
@@ -21,25 +22,30 @@ export async function list(_, { input }) {
 
 export async function show(_, { input }: { input: { id: string } }) {
   try {
-    const anime = await repository.findOne(input.id);
+    const showAnime = container.resolve(ShowAnimeService);
+
+    const anime = await showAnime.execute(input.id);
     if (!anime) return { code: 404, message: "Not found" };
-    return classToClass(anime);
-  } catch {}
+    return anime;
+  } catch(e) {
+    return { code: 500, message: 'Unknown Error'};
+
+  }
 }
 
 export async function store(_: any, { input }) {
   try {
-    const anime = repository.create(input);
-    await repository.save(anime);
+    const addAnime = container.resolve(AddAnimeService);
+    const anime = await  addAnime.execute(input);
     return anime;
   } catch (err) {
     console.log(err);
   }
 }
 
-export async function update(_, { input }: { input: IUpdateAnimeData }) {
+export async function update(_, { input }: { input: IUpdateAnimeDTO }) {
   try {
-    const updateAnime = new UpdateAnimeService();
+    const updateAnime = container.resolve(UpdateAnimeService);
     const updatedAnime = await updateAnime.execute(input);
     return updatedAnime;
   } catch (err) {

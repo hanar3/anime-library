@@ -1,25 +1,16 @@
 import Anime from "@modules/Animes/infra/typeorm/entities/Anime";
 import AppError from "@shared/Error/AppError";
-import { getRepository } from "typeorm";
-
-export interface IUpdateAnimeData {
-  id: string;
-  name?: string;
-  englishName?: string;
-  description?: string;
-  japaneseName?: string;
-  episodes?: number;
-  status?: string;
-}
-
+import IUpdateAnimeDTO from "../dtos/IUpdateAnimeDTO";
+import IAnimesRepository from "../repositories/IAnimesRepository";
 export default class UpdateAnimeService {
-  public async execute(data: IUpdateAnimeData): Promise<Anime> {
-    const animeRepository = getRepository(Anime);
-    const anime = await animeRepository.findOne(data.id);
+  constructor(private animesRepository: IAnimesRepository) {}
+
+  public async execute(data: IUpdateAnimeDTO): Promise<Anime> {
+    const anime = await this.animesRepository.findById(data.id);
     if (!anime) throw new AppError({ code: 404, message: "Anime not found" });
     delete data.id;
     const updatedAnime = Object.assign(anime, data);
-    await animeRepository.save(updatedAnime);
+    await this.animesRepository.save(updatedAnime);
     return updatedAnime;
   }
 }
