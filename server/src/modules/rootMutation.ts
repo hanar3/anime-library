@@ -1,8 +1,8 @@
-import { mutations as animeMutations } from "./Animes";
-import { mutations as reviewMutations } from "./Reviews";
-import { mutations as sessionMutations } from "./Sessions";
-import { mutations as userMutations } from "./Users";
-import { mutations as watchedAnimeMutations } from "./WatchedAnimes";
+import { mutations as animeMutations } from "./Animes/infra/graphql";
+import { mutations as reviewMutations } from "./Reviews/infra/graphql";
+import { mutations as sessionMutations } from "./Sessions/infra/graphql";
+import { mutations as userMutations } from "./Users/infra/graphql";
+import { mutations as watchedAnimeMutations } from "./WatchedAnimes/infra/graphql";
 
 export default {
   ...animeMutations,

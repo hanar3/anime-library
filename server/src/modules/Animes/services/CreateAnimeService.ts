@@ -1,4 +1,4 @@
-import Anime from "../entity/Anime";
+import Anime from "@modules/Animes/infra/typeorm/entities/Anime";
 import { getRepository } from "typeorm";
 
 interface ICreateAnime {

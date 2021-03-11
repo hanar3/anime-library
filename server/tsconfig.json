@@ -14,9 +14,9 @@
       "esModuleInterop": true,
       "baseUrl": "./src",
       "paths": {
-         "@config": ["config"],
-         "@modules": ["modules"],
-         "@shared": ["shared"],
+         "@config/*": ["./config/*"],
+         "@modules/*": ["./modules/*"],
+         "@shared/*": ["./shared/*"],
       }
    }
 }
