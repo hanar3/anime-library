@@ -12,8 +12,7 @@ export default class AnimesRepository implements IAnimesRepository {
 
   public async create(data: ICreateAnimeDTO): Promise<Anime> {
     const anime = this.ormRepository.create(data);
-    await this.ormRepository.save(data);
-    return anime;
+    return this.ormRepository.save(data);
   }
 
   public async findById(id: string): Promise<Anime | undefined> {

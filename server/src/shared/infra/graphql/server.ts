@@ -5,10 +5,16 @@ import { ApolloServer } from "apollo-server-express";
 import { createConnection } from "typeorm";
 import tradeTokenForUser from "@shared/helpers/authHelpers";
 import httpApp from '@shared/infra/http/server';
+import { buildSchema } from "type-graphql";
+import authChecker from "./authChecker";
+import AnimesResolver from "@modules/Animes/infra/graphql/AnimeResolver";
+import UserResolver from "@modules/Users/infra/graphql/UserResolver";
+createConnection().then(async () => {
+  const schema = await buildSchema({
+    resolvers: [AnimesResolver, UserResolver],
+    authChecker: authChecker,
+  })
 
-createConnection().then((connection) => {
-
-  const schema = require('./schema').default;
   const server = new ApolloServer({
     schema,
     playground: true,

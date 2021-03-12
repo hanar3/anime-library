@@ -2,9 +2,11 @@
    "compilerOptions": {
       "lib": [
          "es5",
-         "es6"
+         "es6",
+         "es2018", 
+         "esnext.asynciterable"
       ],
-      "target": "es5",
+      "target": "es2018",
       "module": "commonjs",
       "moduleResolution": "node",
       "outDir": "./build",
@@ -13,6 +15,7 @@
       "sourceMap": true,
       "esModuleInterop": true,
       "baseUrl": "./src",
+      
       "paths": {
          "@config/*": ["./config/*"],
          "@modules/*": ["./modules/*"],

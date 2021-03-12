@@ -1,8 +1,8 @@
 export default interface ICreateAnime {
   name: string;
   englishName?: string;
-  description?: string;
+  description: string;
   japaneseName?: string;
-  episodes?: number;
+  episodes: number;
   status: string;
 }
