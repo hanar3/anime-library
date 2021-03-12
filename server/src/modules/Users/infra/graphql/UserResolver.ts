@@ -1,6 +1,6 @@
 import CreateUserSerivce from "@modules/Users/services/CreateUserService";
 import { container } from "tsyringe";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Mutation, Resolver } from "type-graphql";
 import { CreateUser, User } from "./Types";
 
 @Resolver(User)

@@ -13,7 +13,6 @@ export class User {
   email: string;
 }
 
-
 @InputType()
 export class CreateUser implements ICreateUser {
   @Field()
