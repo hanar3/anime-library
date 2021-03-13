@@ -46,6 +46,6 @@
     "ts-node": "3.3.0",
     "ts-node-dev": "^1.1.1",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "3.3.3333"
+    "typescript": "3.8.2"
   }
 }

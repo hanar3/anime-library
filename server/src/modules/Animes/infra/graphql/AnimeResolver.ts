@@ -3,7 +3,7 @@ import { container } from 'tsyringe';
 import ListAnimesService from "@modules/Animes/services/ListAnimesService";
 import { Anime, IndexInput, PaginatedAnimesResponse, ShowInput, StoreInput, UpdateInput } from './Types';
 import ShowAnimeService from '@modules/Animes/services/ShowAnimeService';
-import AddAnimeService from '@modules/Animes/services/CreateAnimeService';
+import CreateAnimeService from '@modules/Animes/services/CreateAnimeService';
 import UpdateAnimeService from '@modules/Animes/services/UpdateAnimeService';
 
 @Resolver(Anime)
@@ -31,7 +31,7 @@ class AnimeResolver {
   @Authorized()
   @Mutation(() => Anime)
   public async createAnime(@Arg('input') input: StoreInput): Promise<Anime> {
-    const createAnime = container.resolve(AddAnimeService);
+    const createAnime = container.resolve(CreateAnimeService);
     const anime = await createAnime.execute(input);
 
     return anime as Anime;

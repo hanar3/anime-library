@@ -4,7 +4,7 @@ import ICreateAnime from "../dtos/ICreateAnimeDTO";
 import IAnimesRepository from "../repositories/IAnimesRepository";
 
 @injectable()
-export default class AddAnimeService {
+export default class CreateAnimeService {
   constructor(
     @inject('AnimesRepository')
     private animesRepository: IAnimesRepository

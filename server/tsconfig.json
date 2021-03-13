@@ -15,11 +15,11 @@
       "sourceMap": true,
       "esModuleInterop": true,
       "baseUrl": "./src",
-      
+
       "paths": {
          "@config/*": ["./config/*"],
          "@modules/*": ["./modules/*"],
-         "@shared/*": ["./shared/*"],
+         "@shared/*": ["./shared/*"]
       }
    }
 }
