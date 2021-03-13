@@ -10,7 +10,7 @@
   export let url = "";
 
   const client = new Client({
-    endpoint: "http://localhost:4000",
+    endpoint: "http://localhost:4000/graphql",
     fetchOptions: { headers: { Authorization: `Bearer ${$token}` } },
   });
 

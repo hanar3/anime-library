@@ -18,7 +18,7 @@
 
 <div class="container">
   {#if $queryState.loaded}
-    {#each $queryState?.data?.animes ?? [] as anime (anime.id)}
+    {#each $queryState?.data?.animes.items ?? [] as anime (anime.id)}
       <AnimeCard title={anime.name} description={anime.description} />
     {/each}
   {/if}
