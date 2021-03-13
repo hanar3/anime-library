@@ -10,7 +10,7 @@ export default class CreateUserSerivce {
   public async execute({ username, email, password }: ICreateUser): Promise<User | undefined> {
     const schema = Yup.object().shape({
       username: Yup.string().required("Username is a required field"),
-      email: Yup.string().required("Email is a required field"),
+      email: Yup.string().email().required("Email is a required field"),
       password: Yup.string().required("A password is required"),
     });
 
