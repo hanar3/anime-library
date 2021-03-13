@@ -1,5 +1,5 @@
 import PagiantedResponse from "@shared/infra/graphql/types/PaginatedResponse";
-import { Field, InputType, ObjectType } from "type-graphql";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 
 @ObjectType()
 export class Anime {
@@ -37,10 +37,10 @@ export class PaginatedAnimesResponse extends PagiantedResponse<Anime>(Anime) {}
  */
 @InputType()
 export class IndexInput {
-  @Field()
+  @Field(type => Int)
   page: number;
   
-  @Field()
+  @Field(type => Int)
   limit: number;
 }
 
