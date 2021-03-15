@@ -7,7 +7,7 @@ Content Table
 <!--ts-->
    * [About](#about)
    * [Requirements](#requirements)
-   * [Techstack](#tech-stack)
+   * [Techstack](#-tech-stack)
 <!--te-->
 
 <h4 align="center"> 
