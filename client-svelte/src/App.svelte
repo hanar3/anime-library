@@ -1,18 +1,18 @@
 <script lang="typescript">
   import { Router, Route, navigate } from "svelte-routing";
-  import { Client, setDefaultClient } from "micro-graphql-svelte";
 
   import PrivateRoute from "./Routes/PrivateRoute.svelte";
   import Login from "./Pages/Login/index.svelte";
   import Home from "./Pages/Home/index.svelte";
   import { onMount } from "svelte";
   import { token } from "./Stores/User";
+  import { Client, setClient, query } from './graphql/client'
+  import animes from "./graphql/queries/animes";
+
   export let url = "";
 
-  const client = new Client({
-    endpoint: "http://localhost:4000/graphql",
-    fetchOptions: { headers: { Authorization: `Bearer ${$token}` } },
-  });
+  const client = new Client({ uri: 'http://localhost:4000/graphql' })
+  setClient(client);
 
   onMount(() => {
     if ($token) {
@@ -20,13 +20,7 @@
     }
   });
 
-  $: if ($token) {
-    client.fetchOptions = { headers: { Authorization: `Bearer ${$token}` } };
-  } else {
-    client.fetchOptions = { headers: { Authorization: undefined } };
-  }
-
-  setDefaultClient(client);
+  query(animes, { page: 1 }).then(console.log);
 </script>
 
 <Router {url}>
