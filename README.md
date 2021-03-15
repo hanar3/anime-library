@@ -19,7 +19,7 @@ Content Table
 
 The anime library is a website that helps you keep track of your animes - mark an anime as watched, watching or dropped, create a library and share with your friends. 
 
-This is a pet project where I test toy around with technologies and new concepts I learn. As of now, I'm getting familiar with GraphQL and applying some of the principles of SOLID pattern.
+This is a pet project where I toy around with technologies and new concepts I learn. As of now, I'm getting familiar with GraphQL and applying some of the principles of SOLID pattern.
 
 ### Features
 - [x] GraphQL API
