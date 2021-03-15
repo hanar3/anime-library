@@ -6,16 +6,21 @@ Content Table
 =================
 <!--ts-->
    * [About](#about)
-   * [Installing](#installing)
    * [Requirements](#requirements)
    * [Tests](#testes)
-   * [Tecnologias](#tecnologias)
+   * [Techstack](#tech)
 <!--te-->
 
 <h4 align="center"> 
 	🚧  Anime Library 🚀 Under development...  🚧
 </h4>
 
+
+### About
+
+The anime library is a website that helps you keep track of your animes - mark an anime as watched, watching or dropped, create a library and share with your friends. 
+
+This is a pet project where I test toy around with technologies and new concepts I learn. As of now, I'm getting familiar with GraphQL and applying some of the principles of SOLID pattern.
 
 ### Features
 - [x] GraphQL API
@@ -87,4 +92,5 @@ The following tools were used to build this project:
 - [Node.js](https://nodejs.org/en/)
 - [Svelte](https://svelte.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
-
+- [GraphQL](https://graphql.org/)
+- [Type GraphQL](https://https://typegraphql.com/)
