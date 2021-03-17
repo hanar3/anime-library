@@ -34,9 +34,10 @@ This is a pet project where I toy around with technologies and new concepts I le
 ### Requirements
 
 Before you start, you'll need the following tools installed:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
-[Docker] Nice to have, only used for the database setup (https://www.docker.com/)
-[VSCode] (https://code.visualstudio.com/)
+[Git](https://git-scm.com),
+[Node.js](https://nodejs.org/en/),
+[Docker](https://www.docker.com/) ,
+[VSCode](https://code.visualstudio.com/).
 
 ### 🎲 Setting up the server
 
