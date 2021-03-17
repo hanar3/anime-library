@@ -18,11 +18,11 @@ export class Lists1614105500820 implements MigrationInterface {
           },
           {
             name: "anime",
-            type: "uuid",
+            type: "varchar",
           },
           {
             name: "user",
-            type: "integer",
+            type: "varchar",
           },
           {
             name: "watchedEpisodes",

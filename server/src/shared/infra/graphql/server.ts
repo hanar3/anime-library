@@ -1,6 +1,6 @@
 import "reflect-metadata";
-import "dotenv/config";
 import "@shared/container";
+import "dotenv/config";
 import { ApolloServer } from "apollo-server-express";
 import { createConnection } from "typeorm";
 import tradeTokenForUser from "@shared/helpers/authHelpers";
@@ -11,8 +11,10 @@ import AnimesResolver from "@modules/Animes/infra/graphql/AnimeResolver";
 import UserResolver from "@modules/Users/infra/graphql/UserResolver";
 import ReviewsResolver from "@modules/Reviews/infra/graphql/ReviewResolver";
 import SessionsResolver from "@modules/Sessions/infra/graphql/SessionsResolver";
+import dbConfig from '@config/database';
 
-createConnection().then(async () => {
+console.log(dbConfig);
+createConnection(dbConfig).then(async () => {
   const schema = await buildSchema({
     resolvers: [AnimesResolver, UserResolver, ReviewsResolver, SessionsResolver],
     authChecker: authChecker,
@@ -43,4 +45,4 @@ createConnection().then(async () => {
   // TODO: HTTP API
   server.applyMiddleware({ app: httpApp });
 
-});
+}).catch(err => console.log(err));

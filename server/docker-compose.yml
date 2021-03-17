@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  api:
+    image: node:fermium-alpine
+    command: npm run dev
+    depends_on: 
+      - postgres
+    ports: 
+      - 9229:9229
+      - 4000:4000
+    volumes: 
+      - ./:/app
+    working_dir: /app
+    networks: 
+      - anilib_dev
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: animelibdev
+
+    ports:
+      - 5432:5432
+    networks: 
+      - anilib_dev
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks: 
+      - anilib_dev
+
+networks:
+  anilib_dev:
