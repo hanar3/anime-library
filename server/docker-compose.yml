@@ -19,8 +19,10 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-      POSTGRES_DB: animelibdev
-
+      POSTGRES_DB: "${POSTGRES_DB}"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./postgresql/conf:/etc/postgresql/
     ports:
       - 5432:5432
     networks: 
@@ -32,6 +34,9 @@ services:
       - 8080:8080
     networks: 
       - anilib_dev
+
+volumes:
+  postgres:
 
 networks:
   anilib_dev:
