@@ -13,16 +13,6 @@ export class MoreFieldsToReview1614028215490 implements MigrationInterface {
         type: "integer",
         isNullable: true,
       }),
-      new TableColumn({
-        name: "createdAt",
-        type: "timestamp",
-        isNullable: false,
-      }),
-      new TableColumn({
-        name: "updatedAt",
-        type: "timestamp",
-        isNullable: false,
-      }),
     ]);
   }
 
@@ -38,16 +28,7 @@ export class MoreFieldsToReview1614028215490 implements MigrationInterface {
         type: "integer",
         isNullable: true,
       }),
-      new TableColumn({
-        name: "createdAt",
-        type: "timestamp",
-        isNullable: false,
-      }),
-      new TableColumn({
-        name: "updatedAt",
-        type: "timestamp",
-        isNullable: false,
-      }),
+
     ]);
   }
 }

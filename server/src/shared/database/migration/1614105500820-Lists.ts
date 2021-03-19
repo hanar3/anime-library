@@ -16,9 +16,9 @@ export class Lists1614105500820 implements MigrationInterface {
             type: "uuid",
             isPrimary: true,
             isUnique: true,
-            generationStrategy: 'uuid',
-            default: `uuid_generate_v4()`            
-          }, 
+            generationStrategy: "uuid",
+            default: `uuid_generate_v4()`,
+          },
           {
             name: "anime",
             type: "uuid",
@@ -42,10 +42,12 @@ export class Lists1614105500820 implements MigrationInterface {
           {
             name: "createdAt",
             type: "timestamp",
+            default: "now()",
           },
           {
             name: "updatedAt",
             type: "timestamp",
+            default: "now()",
           },
         ],
       })

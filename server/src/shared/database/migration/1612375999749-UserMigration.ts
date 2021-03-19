@@ -30,10 +30,12 @@ export class UserMigration1612375999749 implements MigrationInterface {
                 {
                     name: "createdAt",
                     type: 'timestamp',
+                    default: 'now()',
                 },
                 {
                     name: "updatedAt",
                     type: 'timestamp',
+                    default: 'now()',
                 }
             ]            
         }), true)

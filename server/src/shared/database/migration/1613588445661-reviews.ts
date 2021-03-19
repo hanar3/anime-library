@@ -16,9 +16,9 @@ export class reviews1613588445661 implements MigrationInterface {
             type: "uuid",
             isPrimary: true,
             isUnique: true,
-            generationStrategy: 'uuid',
-            default: `uuid_generate_v4()`            
-          }, 
+            generationStrategy: "uuid",
+            default: `uuid_generate_v4()`,
+          },
           {
             name: "anime",
             type: "uuid",
@@ -32,6 +32,16 @@ export class reviews1613588445661 implements MigrationInterface {
           {
             name: "rating",
             type: "integer",
+          },
+          {
+            name: "createdAt",
+            type: "timestamp",
+            default: "now()",
+          },
+          {
+            name: "updatedAt",
+            type: "timestamp",
+            default: "now()",
           },
         ],
       })
