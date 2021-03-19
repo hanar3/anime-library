@@ -7,11 +7,13 @@ export class AnimeMigration1612378013192 implements MigrationInterface {
             name: 'animes',
             columns: [
                 {
-                    name: 'id',
-                    type: 'varchar',
-                    isPrimary: true,
-                    generationStrategy: 'uuid',
-                },
+                  name: "id",
+                  type: "uuid",
+                  isPrimary: true,
+                  isUnique: true,
+                  generationStrategy: 'uuid',
+                  default: `uuid_generate_v4()`            
+                }, 
                 {
                     name: 'name',
                     type: 'varchar',

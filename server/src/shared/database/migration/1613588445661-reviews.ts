@@ -13,17 +13,21 @@ export class reviews1613588445661 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "varchar",
+            type: "uuid",
             isPrimary: true,
-            generationStrategy: "uuid",
-          },
+            isUnique: true,
+            generationStrategy: 'uuid',
+            default: `uuid_generate_v4()`            
+          }, 
           {
             name: "anime",
-            type: "varchar",
+            type: "uuid",
+            isNullable: false,
           },
           {
             name: "user",
-            type: "varchar",
+            type: "uuid",
+            isNullable: false,
           },
           {
             name: "rating",

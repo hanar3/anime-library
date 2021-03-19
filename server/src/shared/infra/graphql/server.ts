@@ -12,9 +12,16 @@ import UserResolver from "@modules/Users/infra/graphql/UserResolver";
 import ReviewsResolver from "@modules/Reviews/infra/graphql/ReviewResolver";
 import SessionsResolver from "@modules/Sessions/infra/graphql/SessionsResolver";
 import dbConfig from '@config/database';
+import path from 'path';
 
-console.log(dbConfig);
-createConnection(dbConfig).then(async () => {
+
+
+createConnection({
+  ...dbConfig,
+  entities: [
+    path.join(__dirname, '../../../modules/**/infra/typeorm/entities/*.ts')
+  ]
+}).then(async () => {
   const schema = await buildSchema({
     resolvers: [AnimesResolver, UserResolver, ReviewsResolver, SessionsResolver],
     authChecker: authChecker,

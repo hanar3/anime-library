@@ -1,5 +1,5 @@
 import { ConnectionOptions } from "typeorm";
-
+import path from 'path';
 
 export default {
   type: "postgres",
@@ -9,6 +9,4 @@ export default {
   password: process.env.POSTGRES_PASSWORD,
   database: "animelibdev",
   logging: false,
-  entities: ["../modules/**/infra/typeorm/entities/*.ts "],
-  migrations: ["../shared/database/migration/*.ts"],
 } as ConnectionOptions;

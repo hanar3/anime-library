@@ -1,5 +1,5 @@
 import { Field, InputType, ObjectType } from "type-graphql";
-import ICreateUser from "../dtos/ICreateUser";
+import ICreateUser from "../../dtos/ICreateUser";
 
 @ObjectType()
 export class User {

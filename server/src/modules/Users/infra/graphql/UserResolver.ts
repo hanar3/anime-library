@@ -11,6 +11,9 @@ export default class UserResolver {
       const createUser = container.resolve(CreateUserSerivce);
       const newUser = await createUser.execute(user);
       return newUser;
-    } catch {}
+    } catch(err) {
+      console.log({ err });
+
+    }
   }
 }

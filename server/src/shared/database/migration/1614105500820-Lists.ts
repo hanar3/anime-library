@@ -13,16 +13,19 @@ export class Lists1614105500820 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "varchar",
-            generationStrategy: "uuid",
-          },
+            type: "uuid",
+            isPrimary: true,
+            isUnique: true,
+            generationStrategy: 'uuid',
+            default: `uuid_generate_v4()`            
+          }, 
           {
             name: "anime",
-            type: "varchar",
+            type: "uuid",
           },
           {
             name: "user",
-            type: "varchar",
+            type: "uuid",
           },
           {
             name: "watchedEpisodes",

@@ -7,10 +7,12 @@ export class UserMigration1612375999749 implements MigrationInterface {
             name: 'users',
             columns: [
                 {
-                    name: 'id',
-                    type: 'varchar',
-                    generationStrategy: 'uuid',
-                    isPrimary: true,                    
+                  name: "id",
+                  type: "uuid",
+                  isPrimary: true,
+                  isUnique: true,
+                  generationStrategy: 'uuid',
+                  default: `uuid_generate_v4()`            
                 }, 
                 {
                     name: "email",

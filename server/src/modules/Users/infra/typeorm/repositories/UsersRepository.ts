@@ -1,7 +1,7 @@
 import { getRepository, Repository } from "typeorm";
 import { User } from "../entities/User";
 import IUsersRepository from '@modules/Users/repositories/IUsersRepository';
-import ICreateUser from "../../dtos/ICreateUser";
+import ICreateUser from "../../../dtos/ICreateUser";
 import { hash } from "bcryptjs";
 
 class UsersRepository implements IUsersRepository {
