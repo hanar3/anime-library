@@ -45,7 +45,6 @@ createConnection({
     });
 
     // GraphQL server also starts an http server, mostly for file upload
-
     httpApp.use(
       "/graphql",
       jwt({
@@ -54,6 +53,13 @@ createConnection({
         algorithms: ["HS256"],
       })
     );
+
+    httpApp.use(function (err, req, res, next) {
+      if (err.name === 'UnauthorizedError') {
+        res.status(401).json({ error: 'Invalid token' });
+      }
+    });
+
 
     server.applyMiddleware({ app: httpApp });
   })

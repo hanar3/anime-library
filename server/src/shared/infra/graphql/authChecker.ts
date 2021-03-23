@@ -11,7 +11,6 @@ const authChecker: AuthChecker<IContextData> = ({ context }) => {
   console.log(context.user);
 
   if (!context.user) {
-
     return false;
   }
 
