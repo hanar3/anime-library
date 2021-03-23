@@ -19,8 +19,7 @@
       navigate("/home");
     }
   });
-
-  query(animes, { page: 1 }).then(console.log);
+  
 </script>
 
 <Router {url}>

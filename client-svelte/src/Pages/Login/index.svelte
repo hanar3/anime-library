@@ -1,5 +1,5 @@
 <script>
-  import { mutation } from "micro-graphql-svelte";
+  import { mutation } from "../../graphql/client";
   import { navigate } from "svelte-routing";
   import { token } from "../../Stores/User";
   import Field from "../../Components/Field.svelte";
@@ -8,30 +8,18 @@
     username: "",
     password: "",
   };
+  let error = "";
+  const { runMutation, mutationState } = mutation(LOGIN_MUTATION);
 
-  let error: string;
 
-  const { mutationState } = mutation(LOGIN_MUTATION);
   async function handleSubmit() {
-    const { username, password } = fields;
-    try {
-      const { sessionCreate } = await $mutationState.runMutation({
-        username,
-        password,
-      });
-
-      if (sessionCreate.code) {
-        error = sessionCreate.message;
-      } else {
-        error = "";
-        token.set(sessionCreate.token);
-        localStorage.setItem("authToken", sessionCreate.token);
-        navigate("/home");
-      }
-    } catch {
-      window.alert("Error!");
+    const { sessionCreate } =  await runMutation({ username: fields.username, password: fields.password });
+    if(sessionCreate?.token) {
+      token.set(sessionCreate.token);
+      localStorage.setItem('authToken', sessionCreate.token);
+      navigate('/home');
     }
-  }
+}
 </script>
 
 <div class="page">
@@ -53,7 +41,7 @@
       {#if error}
         <span class="error-message">{error}</span>
       {/if}
-      <button disabled={$mutationState.running} type="submit">Log In</button>
+      <button disabled={$mutationState.loading} type="submit">Log In</button>
     </form>
   </div>
   <div class="background" />

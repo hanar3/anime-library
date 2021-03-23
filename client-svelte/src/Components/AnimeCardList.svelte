@@ -1,8 +1,8 @@
 <script>
-  import { query } from "micro-graphql-svelte";
+  import { query } from "../graphql/client";
   import AnimeCard from "./AnimeCard.svelte";
   import ALL_ANIMES_QUERY from "../graphql/queries/animes";
-  const { queryState, sync } = query(ALL_ANIMES_QUERY);
+  const { queryState, runQuery } = query(ALL_ANIMES_QUERY);
 
   let page: number = 1;
 
@@ -13,7 +13,7 @@
     page -= 1;
   }
 
-  $: sync({ page });
+  $: runQuery({ page });
 </script>
 
 <div class="container">

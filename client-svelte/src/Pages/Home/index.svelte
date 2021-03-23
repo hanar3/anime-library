@@ -6,7 +6,7 @@
 </script>
 
 <div class="page">
-  <ProfileBox />
+  <!-- <ProfileBox /> -->
   <div class="input-container">
     <SearchInput bind:value={searchValue} />
     <div class="anime-card-wrapper">
