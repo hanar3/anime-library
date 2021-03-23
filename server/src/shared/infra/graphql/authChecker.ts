@@ -1,6 +1,5 @@
 import { AuthChecker } from "type-graphql";
 
-
 interface IContextData {
   root: any;
   args: any;
@@ -8,10 +7,15 @@ interface IContextData {
   info: any;
 }
 
+const authChecker: AuthChecker<IContextData> = ({ context }) => {
+  console.log(context.user);
 
-const authChecker: AuthChecker<IContextData> = ({ context, root, args, info }) => {
-  // TODO: Check if user is authenticated
+  if (!context.user) {
+
+    return false;
+  }
+
   return true;
-}
+};
 
 export default authChecker;

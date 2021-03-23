@@ -22,7 +22,7 @@ export default class CreateSessionService {
     
     if (!passwordMatches) throw new AppError({ code: 401, message: 'Wrong username or password' });
 
-    const token = sign({ userId: user.id, email: user.email }, 'a28b609a2f78697eda98710f3a8e424797fff38d', { expiresIn: '1d' })
+    const token = sign({ userId: user.id, email: user.email }, 'ssssh-secret', { expiresIn: '1d' })
     return { token };  
   }
 }
