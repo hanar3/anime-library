@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { query } from "micro-graphql-svelte";
+  import { query } from "../graphql/client";
   import { token } from "../Stores/User";
   import Icon from "../Components/Icon.svelte";
   import { PROFILE_QUERY } from "../graphql/queries/user";
   import { navigate } from "svelte-routing";
-  const { queryState, sync } = query(PROFILE_QUERY);
+  const { queryState, runQuery } = query(PROFILE_QUERY);
 
-  $: sync({});
+  $: runQuery({});
   function handleLogout() {
     localStorage.setItem("authToken", "");
     token.set(localStorage.getItem("authToken"));
