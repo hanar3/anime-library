@@ -4,13 +4,16 @@ import ICreateUser from "../../dtos/ICreateUser";
 @ObjectType()
 export class User {
   @Field()
-  id: number;
+  id: string;
 
   @Field()
   username: string;
 
   @Field()
   email: string;
+
+  @Field({ nullable: true })
+  statusMessage: string;
 }
 
 @InputType()

@@ -16,6 +16,10 @@ export default class FakeUsersRepository implements IUsersRepository {
     return this.users.find((u) => u.username === username);
   }
 
+  public async findById(id: string) {
+    return this.users.find(u => u.id === id);
+  }
+
   public seed(): void {
     for (let i = 0; i < 1200; i++) {
       const user = new User();

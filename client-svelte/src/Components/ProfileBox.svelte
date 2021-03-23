@@ -18,7 +18,7 @@
   {#if $queryState.loaded}
     <img src="https://place-hold.it/200x200" alt="profile" class="thumbnail" />
     <span class="username">{$queryState?.data?.profile?.username}</span>
-    <span class="status-quote">{$queryState?.data?.profile?.statusMessage}</span
+    <span class="status-quote">{$queryState?.data?.profile?.statusMessage ?? "Write a status..."}</span
     >
   {/if}
   <button class="logout-btn" on:click={handleLogout}>

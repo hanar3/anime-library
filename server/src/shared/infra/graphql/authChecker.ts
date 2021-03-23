@@ -1,6 +1,6 @@
 import { AuthChecker } from "type-graphql";
 
-interface IContextData {
+export interface IContextData {
   user?: {
      email: string;
      id: string;

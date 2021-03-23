@@ -1,6 +1,6 @@
 import { getContext, setContext } from "svelte";
-import type { Writable } from "svelte/store";
-import { QueryState, mutationState, queryState } from "./store";
+import { writable, Writable } from "svelte/store";
+import { QueryState } from "./store";
 
 interface IClientOptions {
   uri: string;
@@ -21,6 +21,17 @@ export class Client {
     this.uri = uri;
     Object.assign(this.fetchOptions, fetchOptions);
   }
+
+
+  setHeader(key: string, value: string) {
+    this.fetchOptions = {
+      ...this.fetchOptions,
+      headers: {
+        ...this.fetchOptions.headers,
+        [key]: value,
+      }
+    }
+  }
 }
 
 export function setClient(client: Client) {
@@ -40,11 +51,13 @@ interface MutationReturn {
 
 export function mutation(m: string): MutationReturn {
   const client = getClient();
+  const mutationState = writable({} as QueryState);
   const sync = async (
     client: Client,
     payload: { mutation: string; variables: any }
   ) => {
     try {
+
       mutationState.update((prevState) => ({
         ...prevState,
         loaded: false,
@@ -66,6 +79,7 @@ export function mutation(m: string): MutationReturn {
         loading: false,
         data,
       }));
+
       return data;
     } catch (err) {
       mutationState.update((prevState) => ({
@@ -90,6 +104,8 @@ interface IQueryReturn {
 
 export function query(q: string): IQueryReturn {
   const client = getClient();
+  const queryState = writable({} as QueryState)
+
   const sync = async (
     client: Client,
     payload: { query: string; variables: any }

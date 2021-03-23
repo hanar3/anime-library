@@ -6,7 +6,7 @@
   import Home from "./Pages/Home/index.svelte";
   import { onMount } from "svelte";
   import { token } from "./Stores/User";
-  import { Client, setClient, query } from './graphql/client'
+  import { Client, setClient, query, getClient } from './graphql/client'
   import animes from "./graphql/queries/animes";
 
   export let url = "";
@@ -15,11 +15,13 @@
   setClient(client);
 
   onMount(() => {
-    if ($token) {
+    if ($token) {   
       navigate("/home");
     }
   });
-  
+  $: if ($token) {
+    getClient().setHeader('Authorization', `Bearer ${$token}`);
+  }
 </script>
 
 <Router {url}>

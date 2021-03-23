@@ -55,11 +55,10 @@ createConnection({
     );
 
     httpApp.use(function (err, req, res, next) {
-      if (err.name === 'UnauthorizedError') {
-        res.status(401).json({ error: 'Invalid token' });
+      if (err.name === "UnauthorizedError") {
+        res.status(401).json({ error: "Invalid token" });
       }
     });
-
 
     server.applyMiddleware({ app: httpApp });
   })

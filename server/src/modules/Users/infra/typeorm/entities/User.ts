@@ -12,7 +12,7 @@ import Review from "@modules/Reviews/infra/typeorm/entities/Review";
 @Entity({ name: "users" })
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: string;
 
   @Column()
   email: string;
