@@ -1,4 +1,6 @@
 import CreateUserSerivce from "@modules/Users/services/CreateUserService";
+import AppError from "@shared/Error/AppError";
+import { ApolloError } from "apollo-server-errors";
 import { container } from "tsyringe";
 import { Arg, Mutation, Resolver } from "type-graphql";
 import { CreateUser, User } from "./Types";
@@ -12,8 +14,9 @@ export default class UserResolver {
       const newUser = await createUser.execute(user);
       return newUser;
     } catch(err) {
-      console.log({ err });
-
+      if (err instanceof AppError) {
+        throw new ApolloError(err.message, String(err.code));
+      }
     }
   }
 }
