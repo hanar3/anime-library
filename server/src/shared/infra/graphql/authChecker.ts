@@ -1,10 +1,10 @@
 import { AuthChecker } from "type-graphql";
 
 interface IContextData {
-  root: any;
-  args: any;
-  context: any;
-  info: any;
+  user?: {
+     email: string;
+     id: string;
+  }
 }
 
 const authChecker: AuthChecker<IContextData> = ({ context }) => {
