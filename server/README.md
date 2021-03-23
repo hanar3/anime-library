@@ -8,7 +8,7 @@ Before you start, you'll need the following tools installed:
 [VSCode](https://code.visualstudio.com/).
 
 
-P.S.: You'll also need [MAKE](http://gnuwin32.sourceforge.net/packages/make.htm) if you happen to be on Windows.
+Psst! You'll also need [MAKE](http://gnuwin32.sourceforge.net/packages/make.htm) if you happen to be on Windows.
 
 ### 🎲 Setting up the server
 
